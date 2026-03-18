@@ -133,6 +133,8 @@ The scripts are designed to read this key through the configuration module.
 
 You can run each fetcher individually to update specific sources, then run the merge script to create the final harmonized output.
 
+Examples: 
+
 | Step | Command | Purpose |
 |---|---|---|
 | 1 | `python 01_country_reference/fetch_un_comtrade.py` | Fetches and prepares UN Comtrade country reference data. |
