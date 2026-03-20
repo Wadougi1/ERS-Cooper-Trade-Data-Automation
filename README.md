@@ -1,6 +1,6 @@
 # ERS Cooper Trade Data Automation
 
-A data automation and harmonization pipeline developed to support empirical and scenario-based analysis of how **Free Trade Agreements (FTAs)** and **tariff changes** influence **U.S. agricultural exports**.
+A comprehensive data automation and harmonization pipeline developed to support empirical and scenario-based analysis of how **Free Trade Agreements (FTAs)** and **tariff changes** influence **U.S. agricultural exports**.
 
 This project was developed as part of a research effort connected to an **ERS/USDA cooperative research project** and later refined to support a graduate thesis on the impact of FTAs on U.S. agricultural trade. The work integrates international trade, macroeconomic, and policy datasets from multiple global sources into a structured and reusable research workflow.
 
@@ -9,36 +9,33 @@ This project was developed as part of a research effort connected to an **ERS/US
 The purpose of this repository is to automate the collection, cleaning, standardization, and merging of country-level trade reference data from multiple international sources. These automated scripts reduce manual data handling, improve reproducibility, and create a reliable input pipeline for downstream trade and policy analysis.
 
 The project supports a broader analytical framework used to:
-
-- quantify the impact of U.S. Free Trade Agreements on U.S. agricultural exports
-- evaluate how tariff changes influence export performance
-- integrate macroeconomic, trade, and policy variables into a unified dataset
-- support gravity-model estimation and tariff scenario analysis
+- quantify the impact of U.S. Free Trade Agreements on U.S. agricultural exports,
+- evaluate how tariff changes influence export performance,
+- integrate macroeconomic, trade, and policy variables into a unified dataset,
+- support gravity-model estimation and tariff scenario analysis.
 
 ## Research Background
 
 The original research proposal focused on **quantifying trade creation and trade diversion due to Free Trade Agreements**, with particular attention to U.S. FTAs and their effect on agricultural commodities.
 
 As the research developed, the final project evolved into a broader and more applied framework centered on:
-
-- **automated trade-data integration**
-- **FTA and tariff impact analysis**
-- **scenario-based modeling of U.S. agricultural exports**
+- **automated trade-data integration**,
+- **FTA and tariff impact analysis**,
+- **scenario-based modeling of U.S. agricultural exports**.
 
 The final thesis framework examined how trade agreements, tariffs, distance, GDP, exchange rates, and other trade-related factors shape export outcomes. In addition to supporting empirical estimation, the automation pipeline created a repeatable process for integrating data from diverse international institutions.
 
 ## Key Objectives
 
-- Build an automated framework for collecting country and trade reference data from multiple international sources
-- Standardize country names and ISO codes across inconsistent datasets
-- Reduce manual data collection errors in international trade research
-- Produce harmonized outputs that can be used in econometric and scenario analysis workflows
-- Support the analysis of how FTAs and tariff changes affect U.S. agricultural exports
+- Build an automated framework for collecting country and trade reference data from multiple international sources.
+- Standardize country names and ISO codes across inconsistent datasets.
+- Reduce manual data collection errors in international trade research.
+- Produce harmonized outputs that can be used in econometric and scenario analysis workflows.
+- Support the analysis of how FTAs and tariff changes affect U.S. agricultural exports.
 
 ## Data Sources
 
 The automation workflow uses data from multiple sources, including:
-
 - **UN Comtrade**
 - **USDA Foreign Agricultural Service (FAS)**
 - **USDA Production, Supply and Distribution (PSD)**
@@ -47,8 +44,9 @@ The automation workflow uses data from multiple sources, including:
 - **IMF DataMapper**
 - **FAO / FishBase**
 - **U.S. Census Bureau**
+- **CEPII GeoDist Database**
+- **WTO RTA Database**
 
-These sources provide country identifiers, trade-related metadata, and supporting reference information used to harmonize and prepare datasets for analysis.
 ## Repository Structure
 
 ```text
@@ -58,15 +56,44 @@ ERS-Cooper-Trade-Data-Automation/
 ├── requirements.txt
 ├── .gitignore
 │
-└── 01_country_reference/
+├── 01_country_reference/
+│   ├── README.md
+│   ├── config.py
+│   ├── fetch_un_comtrade.py
+│   ├── fetch_fas_psd.py
+│   ├── fetch_worldbank_wits.py
+│   ├── fetch_imf_reporters.py
+│   ├── fetch_fao_census.py
+│   └── merge_country_datasets.py
+│
+├── 02_trade_flows/
+│   ├── README.md
+│   ├── fetch_wits_imports.py
+│   ├── fetch_wits_exports.py
+│   ├── fetch_wto_trade_data.py
+│   ├── fetch_fas_agricultural_exports.py
+│   ├── fetch_fas_gats_exports.py
+│   ├── fetch_worldbank_agriexports.py
+│   ├── fetch_worldbank_agrimports.py
+│   └── fetch_trademap_exports.py
+│
+├── 03_commodities/
+│   ├── README.md
+│   ├── fetch_fas_commodities.py
+│   ├── fetch_wits_commodities.py
+│   └── process_fas_commodity_groups.py
+│
+├── 04_gravity_variables/
+│   ├── README.md
+│   ├── gdp/
+│   ├── exchange_rate/
+│   ├── population/
+│   └── geography/
+│
+└── 05_trade_policy/
     ├── README.md
-    ├── config.py
-    ├── fetch_un_comtrade.py
-    ├── fetch_fas_psd.py
-    ├── fetch_worldbank_wits.py
-    ├── fetch_imf_reporters.py
-    ├── fetch_fao_census.py
-    └── merge_country_datasets.py
+    ├── tariffs/
+    └── trade_agreements/
 ```
 ## Module Descriptions
 
@@ -197,7 +224,8 @@ Potential next steps for the repository include:
 
 Douglas Akwasi Kwarteng<br>
 Graduate Researcher | Cybersecurity & Data Automation<br>
-Master’s Research in Agribusiness, International Trade, and Applied Data Analysis
+Master’s Research in Agribusiness, International Trade, and 
+Applied Data Analysis
 
 ### License
 
